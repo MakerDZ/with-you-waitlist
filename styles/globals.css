@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;  
+
+.bg-lines {
+    background-color: #f9fafb;
+    opacity: 1;
+    background-image: radial-gradient(#eaecf0 1.25px,#f9fafb 1.52px);
+    background-size: 20px 20px;
+}
+    
