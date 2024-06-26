@@ -18,7 +18,7 @@ const StarEmoji = () => {
                 width="0"
                 height="0"
                 sizes="100vw"
-                className=" h-auto xl:w-[60px] lg:w-[50px] md:w-[40px] w-[35px] "
+                className=" h-auto xl:w-[60px] lg:w-[55px] md:w-[45px] w-[40px] "
             />
         </motion.div>
     );

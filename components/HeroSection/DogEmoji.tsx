@@ -2,27 +2,26 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import useIsInViewport from '@/hooks/useIsInViewPort';
 
-
-const SeedlingEmoji = () => {
+const DogEmoji = () => {
     const { isInViewport, ref } = useIsInViewport();
     return (
         <motion.div
             ref={ref}
-            className=" absolute bottom-60 lg:left-80 md:left-52 sm:left-28 left-14"
-            animate={isInViewport ? { x: 0 } : { x: -80 }}
-            initial={{ x: -80 }}
+            className="absolute top-80 lg:right-52 md:right-32 sm:right-16 right-6"
+            animate={isInViewport ? { x: 0 } : { x: 80 }}
+            initial={{ x: 80 }}
             transition={{ type: 'spring', stiffness: 100, damping: 12 }}
         >
             <Image
-                src="/images/SeedlingEmoji.svg"
-                alt="ChartUp"
+                src="/images/DogEmoji.svg"
+                alt="Dog"
                 width="0"
                 height="0"
                 sizes="100vw"
-                className=" h-auto xl:w-[55px] lg:w-[50px] md:w-[40px] w-[35px]"
+                className="h-auto xl:w-[55px] lg:w-[50px] md:w-[40px] w-[35px] "
             />
         </motion.div>
     );
 };
 
-export default SeedlingEmoji;
+export default DogEmoji;

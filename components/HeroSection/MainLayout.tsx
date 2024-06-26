@@ -2,8 +2,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import HeroContent from './HeroContent';
 import StarEmoji from './StarEmoji';
-import ChartUp from './ChartUp';
+import ChartUpEmoji from './ChartUpEmoji';
 import SeedlingEmoji from './SeedlingEmoji';
+import TargetEmoji from './TargetEmoji';
+import DogEmoji from './DogEmoji';
+import PrizeEmoji from './PrizeEmoji';
 
 const HeroMainLayout = () => {
     const [activesupportiveMessagesIndex, setActivesupportiveMessagesIndex] =
@@ -152,8 +155,12 @@ const HeroMainLayout = () => {
             </div>
             <HeroContent>
                 <StarEmoji />
-                <ChartUp />
+                <ChartUpEmoji />
                 <SeedlingEmoji />
+
+                <TargetEmoji />
+                <DogEmoji />
+                <PrizeEmoji />
             </HeroContent>
         </div>
     );
