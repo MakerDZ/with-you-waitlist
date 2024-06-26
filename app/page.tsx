@@ -1,11 +1,11 @@
-import HeroSection from '@/components/HeroSection';
+import HeroMainLayout from '@/components/HeroSection/MainLayout';
 import NavBar from '@/components/NavBar';
 
 export default function Home() {
     return (
         <main>
             <NavBar />
-            <HeroSection />
+            <HeroMainLayout />
         </main>
     );
 }

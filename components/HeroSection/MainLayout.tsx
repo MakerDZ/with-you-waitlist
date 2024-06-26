@@ -1,7 +1,11 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
+import HeroContent from './HeroContent';
+import StarEmoji from './StarEmoji';
+import ChartUp from './ChartUp';
+import SeedlingEmoji from './SeedlingEmoji';
 
-const HeroSection = () => {
+const HeroMainLayout = () => {
     const [activesupportiveMessagesIndex, setActivesupportiveMessagesIndex] =
         useState(0);
     const supportiveMessagesContainerRef = useRef<any>(null);
@@ -146,21 +150,13 @@ const HeroSection = () => {
                     })}
                 </div>
             </div>
-            <div className="next-trip h-screen w-full -mt-[50vh] flex flex-col justify-center items-center relative">
-                {/* <img
-                    src="./next-trip.jpg"
-                    alt="Next trip"
-                    className="w-full h-full object-cover absolute mask-image-gradient"
-                /> */}
-                <span className="z-10 text-shadow text-center select-none text-xl text-[#667085] font-semibold">
-                    Your Empathy Companion
-                </span>
-                <span className="z-10 text-shadow text-center select-none text-3xl font-bold">
-                    Balancing Life with Personalized Support
-                </span>
-            </div>
+            <HeroContent>
+                <StarEmoji />
+                <ChartUp />
+                <SeedlingEmoji />
+            </HeroContent>
         </div>
     );
 };
 
-export default HeroSection;
+export default HeroMainLayout;
