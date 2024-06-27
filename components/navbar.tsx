@@ -34,7 +34,7 @@ export default function NavBar() {
                 radius="md"
                 className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg font-bold sm:text-base text-sm"
             >
-                Join Discord
+                Join WaitList
             </Button>
         </nav>
     );
