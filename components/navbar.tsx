@@ -4,7 +4,7 @@ export default function NavBar() {
     return (
         <nav className=" sticky top-4 text-[#475466] z-50 flex flex-row justify-between items-center px-6">
             <div className="px-2 py-2 backdrop-blur-md bg-white/30 rounded-lg text-lg font-extrabold flex flex-row items-center space-x-2">
-                <div className="relative flex items-center justify-center aspect-square z-10 hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))]">
+                <div className="relative flex items-center justify-center aspect-square z-10 ">
                     <img
                         alt="Avatar"
                         loading="lazy"

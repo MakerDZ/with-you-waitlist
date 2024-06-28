@@ -14,6 +14,8 @@ module.exports = {
             },
             animation: {
                 bounce: 'bounce 1s infinite',
+                'border-beam':
+                    'border-beam calc(var(--duration)*1s) infinite linear',
             },
             keyframes: {
                 bounce: {
@@ -24,6 +26,11 @@ module.exports = {
                     '50%': {
                         transform: 'translateY(0)',
                         animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+                    },
+                },
+                'border-beam': {
+                    '100%': {
+                        'offset-distance': '100%',
                     },
                 },
             },
