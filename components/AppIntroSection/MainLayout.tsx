@@ -48,7 +48,7 @@ const AppIntroSection = () => {
     };
 
     return (
-        <section className="next-trip h-[400vh] w-full relative">
+        <section className="next-trip h-[350vh] w-full relative">
             <div className="h-[100vh] w-full flex flex-col justify-center items-center top-0 sticky-container">
                 <AnimatedListDemo />
                 <motion.div
@@ -65,14 +65,14 @@ const AppIntroSection = () => {
                         style={{
                             transform: 'translateZ(75px)',
                         }}
-                        className="z-10 w-full text-shadow text-center select-none md:text-lg  font-bold  mb-4"
+                        className="z-10 w-full text-shadow text-center select-none md:text-lg  font-bold  mb-4 text-[#515460]"
                     >
                         Get{' '}
                         <span
                             style={{
                                 fontWeight: 'inherit',
                                 backgroundImage:
-                                    'linear-gradient(135deg, #9e7aff 0%, #fe8bbb 33.33%, #ffbd7a 66.67%, #EBA434 100%)',
+                                    'linear-gradient(135deg, #9e7aff 0%, #EC5291 33.33%, #ffbd7a 44.67%, #FD9C25 53%)',
                                 backgroundClip: 'text',
                                 WebkitBackgroundClip: 'text',
                                 color: 'transparent',
