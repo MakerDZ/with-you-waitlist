@@ -58,7 +58,7 @@ export function AnimatedListItem({ children }: { children: React.ReactNode }) {
             {...animations}
             layout
             className="mx-auto w-full"
-            onAnimationStart={() => console.log('Animation started')}
+            onAnimationStart={() => {}}
         >
             {children}
         </motion.div>

@@ -11,29 +11,6 @@ import { OrbitingCirclesDemo } from './CompanionOrbit';
 import { HeatMap } from './HeatMap';
 import EmotionChart from './EmotionChart';
 
-const files = [
-    {
-        name: 'bitcoin.pdf',
-        body: 'Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.',
-    },
-    {
-        name: 'finances.xlsx',
-        body: 'A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.',
-    },
-    {
-        name: 'logo.svg',
-        body: 'Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.',
-    },
-    {
-        name: 'keys.gpg',
-        body: 'GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.',
-    },
-    {
-        name: 'seed.txt',
-        body: 'A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.',
-    },
-];
-
 interface Item {
     name: string;
     description: string;
@@ -116,7 +93,7 @@ const features = [
     {
         Icon: HeartIcon,
         name: 'EQ Prioritized',
-        description: 'We automatically save your files as you type.',
+        description: `Your pet's high emotional intelligence helps it understand you deeply and supportively figure things out.`,
         href: '/',
         cta: 'Learn more',
         className: 'col-span-3 lg:col-span-1',
@@ -125,7 +102,8 @@ const features = [
     {
         Icon: TargetIcon,
         name: 'Track Your Journey',
-        description: 'Search through all your files in one place.',
+        description:
+            'Share your goals with your pet, track each step, and reflect on your journey.',
         href: '/',
         cta: 'Learn more',
         className: 'col-span-3 lg:col-span-2',
@@ -138,7 +116,8 @@ const features = [
     {
         Icon: EyeOpenIcon,
         name: 'Visualize your emotions',
-        description: 'Supports 100+ integrations and counting.',
+        description:
+            'Safely share your emotions with your pet. It will help you visualize them and listen closely.',
         href: '/',
         cta: 'Learn more',
         className: 'col-span-3 lg:col-span-2',
@@ -151,7 +130,8 @@ const features = [
     {
         Icon: BellIcon,
         name: 'Personalized Reminders',
-        description: 'Use the calendar to filter your files by date.',
+        description:
+            'Your pet will understand when to send encouragement based on your struggles and reflection reminders.',
         className: 'col-span-3 lg:col-span-1',
         href: '/',
         cta: 'Learn more',

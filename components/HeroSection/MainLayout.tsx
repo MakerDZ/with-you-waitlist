@@ -37,7 +37,7 @@ const HeroMainLayout = () => {
     ];
 
     const skip = supportiveMessages.filter(
-        (supportiveMessages) => !supportiveMessages.emoji
+        (supportiveMessage) => !supportiveMessage.emoji
     ).length;
 
     // Adjust this value to control the spread of supportiveMessages
@@ -49,7 +49,10 @@ const HeroMainLayout = () => {
 
     useEffect(() => {
         const onScroll = () => {
-            if (supportiveMessagesContainerRef.current) {
+            if (
+                typeof window !== 'undefined' &&
+                supportiveMessagesContainerRef.current
+            ) {
                 const maxScrollY =
                     supportiveMessagesContainerRef.current.clientHeight -
                     window.innerHeight;
@@ -96,17 +99,23 @@ const HeroMainLayout = () => {
                 className="h-[600vh] relative"
             >
                 <div className="follow-screen h-screen sticky top-0 flex items-center -ml-[30vw]">
-                    {supportiveMessages.map((supportiveMessages, index) => {
+                    {supportiveMessages.map((supportiveMessage, index) => {
                         const rotationPercentage =
                             index * persupportiveMessagesRotationPercentage;
                         const rotation =
                             (rotationPercentage / 100) * totalRotation;
+
                         const scrollRotation =
-                            (window.scrollY /
-                                (supportiveMessagesContainerRef.current
-                                    ?.clientHeight -
-                                    window.innerHeight)) *
-                            totalRotation;
+                            typeof window !== 'undefined' &&
+                            window.scrollY !== undefined &&
+                            supportiveMessagesContainerRef.current
+                                ? (window.scrollY /
+                                      (supportiveMessagesContainerRef.current
+                                          ?.clientHeight -
+                                          window.innerHeight)) *
+                                  totalRotation
+                                : 0;
+
                         const skipRotation =
                             ((skip * persupportiveMessagesRotationPercentage) /
                                 100) *
@@ -116,18 +125,18 @@ const HeroMainLayout = () => {
                             <span
                                 key={index}
                                 className={`
-                  absolute transform-gpu origin-left pl-[40vw] whitespace-nowrap select-none
-                  transition-all duration-300 ease-in-out text-[4.5vw] flex items-center
-                  ${!supportiveMessages.emoji ? 'pointer-events-none opacity-20' : ''}
-                  ${index === activesupportiveMessagesIndex ? 'active' : ''}
-                  ${!supportiveMessages.emoji && index !== activesupportiveMessagesIndex ? 'opacity-50' : ''}
-                  ${supportiveMessages.emoji && index !== activesupportiveMessagesIndex ? 'hover:opacity-70 cursor-pointer' : ''}
-                `}
+                                    absolute transform-gpu origin-left pl-[40vw] whitespace-nowrap select-none
+                                    transition-all duration-300 ease-in-out text-[4.5vw] flex items-center
+                                    ${!supportiveMessage.emoji ? 'pointer-events-none opacity-20' : ''}
+                                    ${index === activesupportiveMessagesIndex ? 'active' : ''}
+                                    ${!supportiveMessage.emoji && index !== activesupportiveMessagesIndex ? 'opacity-50' : ''}
+                                    ${supportiveMessage.emoji && index !== activesupportiveMessagesIndex ? 'hover:opacity-70 cursor-pointer' : ''}
+                                `}
                                 style={{
                                     transform: `rotate(${rotation - scrollRotation - skipRotation}deg)`,
                                 }}
                                 onClick={() =>
-                                    supportiveMessages.emoji &&
+                                    supportiveMessage.emoji &&
                                     handlesupportiveMessagesClick(index)
                                 }
                             >
@@ -141,12 +150,12 @@ const HeroMainLayout = () => {
                                                 : 'scale(0)',
                                     }}
                                 >
-                                    {supportiveMessages.emoji}
+                                    {supportiveMessage.emoji}
                                 </span>
                                 <span
                                     className={`xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold ${index === activesupportiveMessagesIndex ? 'text-[#667085]' : 'text-[#D0D5DD]'} `}
                                 >
-                                    {supportiveMessages.text}
+                                    {supportiveMessage.text}
                                 </span>
                             </span>
                         );
@@ -157,7 +166,6 @@ const HeroMainLayout = () => {
                 <StarEmoji />
                 <ChartUpEmoji />
                 <SeedlingEmoji />
-
                 <TargetEmoji />
                 <DogEmoji />
                 <PrizeEmoji />
