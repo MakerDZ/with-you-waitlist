@@ -170,7 +170,7 @@ const features = [
 export function FeatureGridSection() {
     return (
         <section className="next-trip lg:h-[150vh] h-full w-full">
-            <div className="w-full lg:h-[100vh] h-full lg:py-0 py-16 px-20 flex flex-col justify-center items-center top-0 sticky-container">
+            <div className="mx-auto w-10/12 lg:h-[100vh] h-full lg:py-0 py-16  flex flex-col justify-center items-center top-0 sticky-container">
                 <BentoGrid>
                     {features.map((feature, idx) => (
                         <BentoCard key={idx} {...feature} />

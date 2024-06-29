@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     motion,
     useMotionTemplate,
@@ -15,6 +15,7 @@ const HALF_ROTATION_RANGE = 32.5 / 2;
 
 const AppIntroSection = () => {
     const ref = useRef<any>(null);
+    const [isScrolling, setIsScrolling] = useState(false);
 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -23,6 +24,62 @@ const AppIntroSection = () => {
     const ySpring = useSpring(y);
 
     const transform = useMotionTemplate`rotateX(${xSpring}deg) rotateY(${ySpring}deg)`;
+
+    useEffect(() => {
+        let scrollTimeout: number | undefined;
+        let scrollInterval: number | undefined;
+
+        const handleScroll = () => {
+            if (ref.current) {
+                const rect = ref.current.getBoundingClientRect();
+                const inView =
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <=
+                        (window.innerHeight ||
+                            document.documentElement.clientHeight) &&
+                    rect.right <=
+                        (window.innerWidth ||
+                            document.documentElement.clientWidth);
+
+                if (inView) {
+                    setIsScrolling(true);
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = window.setTimeout(() => {
+                        setIsScrolling(false);
+                    }, 150); // Adjust the timeout as needed
+                } else {
+                    setIsScrolling(false);
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (scrollTimeout !== undefined) clearTimeout(scrollTimeout);
+            if (scrollInterval !== undefined) clearInterval(scrollInterval);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (isScrolling) {
+            const interval = window.setInterval(() => {
+                // Generate random values within a small range of the current values
+                const newX = x.get() + Math.floor(Math.random() * 11) - 5; // Adjust range as needed
+                const newY = y.get() + Math.floor(Math.random() * 11) - 5; // Adjust range as needed
+                x.set(newX);
+                y.set(newY);
+            }, 100);
+
+            return () => {
+                clearInterval(interval);
+            };
+        } else {
+            x.set(0);
+            y.set(0);
+        }
+    }, [isScrolling]);
 
     const handleMouseMove = (e: any) => {
         if (!ref.current) return [0, 0];
