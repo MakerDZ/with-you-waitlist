@@ -105,8 +105,8 @@ const AppIntroSection = () => {
     };
 
     return (
-        <section className="next-trip h-[350vh] w-full relative">
-            <div className="h-screen w-full flex flex-col justify-center items-center top-0 sticky-container">
+        <section className="next-trip min-h-[400vh] max-h-[400vh] w-full relative">
+            <div className="h-[80vh] w-full flex flex-col justify-center items-center top-16 sticky">
                 <AnimatedListDemo />
                 <motion.div
                     ref={ref}
