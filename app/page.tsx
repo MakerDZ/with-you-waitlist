@@ -9,6 +9,7 @@ export default function Home() {
             <NavBar />
             <HeroMainLayout />
             <AppIntroSection />
+            <div className="w-full h-14"></div>
             <FeatureGridSection />
         </main>
     );

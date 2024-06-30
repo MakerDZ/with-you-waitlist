@@ -150,7 +150,7 @@ const AppIntroSection = () => {
                         <BorderBeam size={250} duration={12} delay={9} />
                         <Image
                             src="/images/AppPreview.png"
-                            alt="blog thumbnail"
+                            alt="App Preview"
                             width="0"
                             height="0"
                             sizes="100vw"
