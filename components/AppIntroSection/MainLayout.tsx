@@ -105,7 +105,7 @@ const AppIntroSection = () => {
     };
 
     return (
-        <section className="next-trip min-h-[400vh] max-h-[400vh] w-full relative">
+        <section className="next-trip min-h-[200vh] max-h-[200vh] w-full relative mb-20">
             <div className="h-[80vh] w-full flex flex-col justify-center items-center top-16 sticky">
                 <AnimatedListDemo />
                 <motion.div

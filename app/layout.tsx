@@ -13,12 +13,6 @@ export const metadata: Metadata = {
     },
 };
 
-// export const viewport: Viewport = {
-//   themeColor: [
-//     { media: "(prefers-color-scheme: light)", color: "white" },
-//     { media: "(prefers-color-scheme: dark)", color: "black" },
-//   ],
-// };
 
 export default function RootLayout({
     children,
@@ -28,7 +22,7 @@ export default function RootLayout({
     return (
         <html suppressHydrationWarning lang="en">
             <head />
-            <body className="bg-lines min-h-screen h-full bg-gradient-to-r from-[#F3F6FF] to-white font-nunito relative">
+            <body className="bg-lines min-h-screen h-full bg-gradient-to-r from-[#F3F6FF] to-white font-nunito relative overflow-x-hidden">
                 {children}
             </body>
         </html>
