@@ -1,17 +1,22 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import useIsInViewport from '@/hooks/useIsInViewPort';
-
+import useIsMobile from '@/hooks/useIsMobile';
 
 const SeedlingEmoji = () => {
     const { isInViewport, ref } = useIsInViewport();
+    const { isMobile } = useIsMobile();
     return (
         <motion.div
             ref={ref}
             className=" absolute bottom-60 lg:left-80 md:left-52 sm:left-28 left-14"
-            animate={isInViewport ? { x: 0 } : { x: -80 }}
-            initial={{ x: -80 }}
-            transition={{ type: 'spring', stiffness: 100, damping: 12 }}
+            animate={!isMobile && isInViewport ? { x: 0 } : { x: -80 }}
+            initial={!isMobile ? { x: -80 } : undefined}
+            transition={
+                !isMobile
+                    ? { type: 'spring', stiffness: 100, damping: 12 }
+                    : undefined
+            }
         >
             <Image
                 src="/images/SeedlingEmoji.svg"

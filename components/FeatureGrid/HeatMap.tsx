@@ -3,8 +3,8 @@ import ActivityCalendar, { ThemeInput } from 'react-activity-calendar';
 export function HeatMap() {
     // @ts-nocheck
     const explicitTheme: ThemeInput = {
-        light: ['#9AE9A8', '#41C363', '#31A14E', '#206D38', '#206D38'],
-        dark: ['#383838', '#4D455D', '#7DB9B6', '#F5E9CF', '#E96479'],
+        light: ['#9AE9A8', '#41C363'],
+        dark: ['#9AE9A8', '#41C363'],
     };
 
     return (

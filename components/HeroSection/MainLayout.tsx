@@ -12,6 +12,7 @@ const HeroMainLayout = () => {
     const [activesupportiveMessagesIndex, setActivesupportiveMessagesIndex] =
         useState(0);
     const supportiveMessagesContainerRef = useRef<any>(null);
+    const [TOTAL_ROTATION_ANGLE, setTotalRotationAngle] = useState(100);
 
     const supportiveMessages = [
         { text: 'I am with you to motivate you.', emoji: null },
@@ -37,19 +38,43 @@ const HeroMainLayout = () => {
     ];
 
     const skip = supportiveMessages.filter(
-        (supportiveMessages) => !supportiveMessages.emoji
+        (supportiveMessage) => !supportiveMessage.emoji
     ).length;
 
     // Adjust this value to control the spread of supportiveMessages
-    const TOTAL_ROTATION_ANGLE = 100; // degrees
+    //const TOTAL_ROTATION_ANGLE = 100;
 
     const persupportiveMessagesRotationPercentage =
         100 / (supportiveMessages.length - skip - 1);
     const totalRotation = TOTAL_ROTATION_ANGLE;
 
     useEffect(() => {
+        const updateRotationAngle = () => {
+            if (typeof window !== 'undefined') {
+                if (window.matchMedia('(min-width: 1280px)').matches) {
+                    setTotalRotationAngle(100);
+                } else if (window.matchMedia('(min-width: 1024px)').matches) {
+                    setTotalRotationAngle(100);
+                } else if (window.matchMedia('(min-width: 768px)').matches) {
+                    setTotalRotationAngle(130);
+                } else {
+                    setTotalRotationAngle(180);
+                }
+            }
+        };
+
+        window.addEventListener('resize', updateRotationAngle);
+        updateRotationAngle();
+
+        return () => window.removeEventListener('resize', updateRotationAngle);
+    }, []);
+
+    useEffect(() => {
         const onScroll = () => {
-            if (supportiveMessagesContainerRef.current) {
+            if (
+                typeof window !== 'undefined' &&
+                supportiveMessagesContainerRef.current
+            ) {
                 const maxScrollY =
                     supportiveMessagesContainerRef.current.clientHeight -
                     window.innerHeight;
@@ -89,75 +114,83 @@ const HeroMainLayout = () => {
     };
 
     return (
-        <div className="overflow-x-clip">
-            <div
-                id="supportiveMessages"
-                ref={supportiveMessagesContainerRef}
-                className="h-[600vh] relative"
-            >
-                <div className="follow-screen h-screen sticky top-0 flex items-center -ml-[30vw]">
-                    {supportiveMessages.map((supportiveMessages, index) => {
-                        const rotationPercentage =
-                            index * persupportiveMessagesRotationPercentage;
-                        const rotation =
-                            (rotationPercentage / 100) * totalRotation;
-                        const scrollRotation =
-                            (window.scrollY /
-                                (supportiveMessagesContainerRef.current
-                                    ?.clientHeight -
-                                    window.innerHeight)) *
-                            totalRotation;
-                        const skipRotation =
-                            ((skip * persupportiveMessagesRotationPercentage) /
-                                100) *
-                            totalRotation;
+        <div className="w-full">
+            <div className="overflow-x-clip over hidden md:flex">
+                <div
+                    id="supportiveMessages"
+                    ref={supportiveMessagesContainerRef}
+                    className="h-[600vh] relative"
+                >
+                    <div className="follow-screen h-screen sticky top-0 flex items-center -ml-[30vw]">
+                        {supportiveMessages.map((supportiveMessage, index) => {
+                            const rotationPercentage =
+                                index * persupportiveMessagesRotationPercentage;
+                            const rotation =
+                                (rotationPercentage / 100) * totalRotation;
 
-                        return (
-                            <span
-                                key={index}
-                                className={`
-                  absolute transform-gpu origin-left pl-[40vw] whitespace-nowrap select-none
-                  transition-all duration-300 ease-in-out text-[4.5vw] flex items-center
-                  ${!supportiveMessages.emoji ? 'pointer-events-none opacity-20' : ''}
-                  ${index === activesupportiveMessagesIndex ? 'active' : ''}
-                  ${!supportiveMessages.emoji && index !== activesupportiveMessagesIndex ? 'opacity-50' : ''}
-                  ${supportiveMessages.emoji && index !== activesupportiveMessagesIndex ? 'hover:opacity-70 cursor-pointer' : ''}
-                `}
-                                style={{
-                                    transform: `rotate(${rotation - scrollRotation - skipRotation}deg)`,
-                                }}
-                                onClick={() =>
-                                    supportiveMessages.emoji &&
-                                    handlesupportiveMessagesClick(index)
-                                }
-                            >
+                            const scrollRotation =
+                                typeof window !== 'undefined' &&
+                                window.scrollY !== undefined &&
+                                supportiveMessagesContainerRef.current
+                                    ? (window.scrollY /
+                                          (supportiveMessagesContainerRef
+                                              .current?.clientHeight -
+                                              window.innerHeight)) *
+                                      totalRotation
+                                    : 0;
+
+                            const skipRotation =
+                                ((skip *
+                                    persupportiveMessagesRotationPercentage) /
+                                    100) *
+                                totalRotation;
+
+                            return (
                                 <span
-                                    className="absolute left-[35vw] font-['Noto_Color_Emoji'] scale-0 transition-transform duration-200 ease-in-out"
+                                    key={index}
+                                    className={`
+                                    absolute transform-gpu origin-left pl-[40vw] whitespace-nowrap select-none
+                                    transition-all duration-300 ease-in-out text-[4.5vw] flex items-center
+                                    ${!supportiveMessage.emoji ? 'pointer-events-none opacity-20' : ''}
+                                    ${index === activesupportiveMessagesIndex ? 'active' : ''}
+                                    ${!supportiveMessage.emoji && index !== activesupportiveMessagesIndex ? 'opacity-50' : ''}
+                                    ${supportiveMessage.emoji && index !== activesupportiveMessagesIndex ? 'hover:opacity-70 cursor-pointer' : ''}
+                                `}
                                     style={{
-                                        transform:
-                                            index ===
-                                            activesupportiveMessagesIndex
-                                                ? 'scale(0.7)'
-                                                : 'scale(0)',
+                                        transform: `rotate(${rotation - scrollRotation - skipRotation}deg)`,
                                     }}
+                                    onClick={() =>
+                                        supportiveMessage.emoji &&
+                                        handlesupportiveMessagesClick(index)
+                                    }
                                 >
-                                    {supportiveMessages.emoji}
+                                    <span
+                                        className="absolute left-[35vw] scale-0 transition-transform duration-200 ease-in-out"
+                                        style={{
+                                            transform:
+                                                index ===
+                                                activesupportiveMessagesIndex
+                                                    ? 'scale(0.7)'
+                                                    : 'scale(0)',
+                                        }}
+                                    >
+                                        {supportiveMessage.emoji}
+                                    </span>
+                                    <span
+                                        className={`xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold ${index === activesupportiveMessagesIndex ? 'text-[#667085]' : 'text-[#D0D5DD]'} `}
+                                    >
+                                        {supportiveMessage.text}
+                                    </span>
                                 </span>
-                                <span
-                                    className={`xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold ${index === activesupportiveMessagesIndex ? 'text-[#667085]' : 'text-[#D0D5DD]'} `}
-                                >
-                                    {supportiveMessages.text}
-                                </span>
-                            </span>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
             <HeroContent>
                 <StarEmoji />
                 <ChartUpEmoji />
                 <SeedlingEmoji />
-
                 <TargetEmoji />
                 <DogEmoji />
                 <PrizeEmoji />
