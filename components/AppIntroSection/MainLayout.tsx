@@ -105,62 +105,60 @@ const AppIntroSection = () => {
     };
 
     return (
-        <section className="next-trip md:min-h-[200vh] md:max-h-[200vh] h-[150vh] w-full relative mb-20">
-            <div className="h-[80vh] w-full flex flex-col justify-center items-center top-16 sticky">
-                <AnimatedListDemo />
-                <motion.div
-                    ref={ref}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
+        <div className="h-screen w-full flex flex-col justify-center items-center relative">
+            <AnimatedListDemo />
+            <motion.div
+                ref={ref}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                    transformStyle: 'preserve-3d',
+                    transform,
+                }}
+                className="md:w-9/12 sm:w-10/12 w-11/12 mx-auto border-[2px] border-[#E5E5E5] rounded-xl shadow-md shadow-indigo-900/5 bg-white pt-7 md:px-10 px-8  lg:pb-16 md:pb-12 pb-10"
+            >
+                <p
                     style={{
-                        transformStyle: 'preserve-3d',
-                        transform,
+                        transform: 'translateZ(75px)',
                     }}
-                    className="md:w-9/12 sm:w-10/12 w-11/12 mx-auto border-[2px] border-[#E5E5E5] rounded-xl shadow-md shadow-indigo-900/5 bg-white pt-7 md:px-10 px-8  lg:pb-16 md:pb-12 pb-10"
+                    className="z-10 w-full text-shadow text-center select-none md:text-lg  font-bold  mb-4 text-[#515460]"
                 >
-                    <p
+                    Get{' '}
+                    <span
                         style={{
-                            transform: 'translateZ(75px)',
+                            fontWeight: 'inherit',
+                            backgroundImage:
+                                'linear-gradient(135deg, #9e7aff 0%, #EC5291 33.33%, #ffbd7a 44.67%, #FD9C25 53%)',
+                            backgroundClip: 'text',
+                            WebkitBackgroundClip: 'text',
+                            color: 'transparent',
+                            WebkitTextFillColor: 'transparent',
                         }}
-                        className="z-10 w-full text-shadow text-center select-none md:text-lg  font-bold  mb-4 text-[#515460]"
                     >
-                        Get{' '}
-                        <span
-                            style={{
-                                fontWeight: 'inherit',
-                                backgroundImage:
-                                    'linear-gradient(135deg, #9e7aff 0%, #EC5291 33.33%, #ffbd7a 44.67%, #FD9C25 53%)',
-                                backgroundClip: 'text',
-                                WebkitBackgroundClip: 'text',
-                                color: 'transparent',
-                                WebkitTextFillColor: 'transparent',
-                            }}
-                        >
-                            Personalized Support{' '}
-                        </span>
-                        From Empathy Companion
-                    </p>
-                    <div
-                        style={{
-                            transform: 'translateZ(75px)',
-                            transformStyle: 'preserve-3d',
-                        }}
-                        className="relative w-full h-auto rounded-md"
-                    >
-                        <BorderBeam size={250} duration={12} delay={9} />
-                        <Image
-                            src="/images/AppPreview.png"
-                            alt="App Preview"
-                            width="0"
-                            height="0"
-                            sizes="100vw"
-                            className="w-full h-auto rounded-md border-[1px] border-gray-200"
-                        />
-                        <BorderBeam size={250} duration={12} delay={9} />
-                    </div>
-                </motion.div>
-            </div>
-        </section>
+                        Personalized Support{' '}
+                    </span>
+                    From Empathy Companion
+                </p>
+                <div
+                    style={{
+                        transform: 'translateZ(75px)',
+                        transformStyle: 'preserve-3d',
+                    }}
+                    className="relative w-full h-auto rounded-md"
+                >
+                    <BorderBeam size={250} duration={12} delay={9} />
+                    <Image
+                        src="/images/AppPreview.png"
+                        alt="App Preview"
+                        width="0"
+                        height="0"
+                        sizes="100vw"
+                        className="w-full h-auto rounded-md border-[1px] border-gray-200"
+                    />
+                    <BorderBeam size={250} duration={12} delay={9} />
+                </div>
+            </motion.div>
+        </div>
     );
 };
 
