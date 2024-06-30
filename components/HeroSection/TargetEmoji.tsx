@@ -1,16 +1,22 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import useIsInViewport from '@/hooks/useIsInViewPort';
+import useIsMobile from '@/hooks/useIsMobile';
 
 const TargetEmoji = () => {
     const { isInViewport, ref } = useIsInViewport();
+    const { isMobile } = useIsMobile();
     return (
         <motion.div
             className="absolute top-60 lg:right-80 md:right-52 sm:right-10 right-0"
             ref={ref}
-            animate={isInViewport ? { y: 0 } : { y: -110 }}
-            initial={{ y: -200 }}
-            transition={{ type: 'spring', stiffness: 100, damping: 12 }}
+            animate={!isMobile && isInViewport ? { y: 0 } : { y: -110 }}
+            initial={!isMobile ? { y: -200 } : undefined}
+            transition={
+                !isMobile
+                    ? { type: 'spring', stiffness: 100, damping: 12 }
+                    : undefined
+            }
         >
             <Image
                 src="/images/TargetEmoji.svg"

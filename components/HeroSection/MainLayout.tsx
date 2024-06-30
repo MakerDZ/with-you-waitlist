@@ -114,7 +114,7 @@ const HeroMainLayout = () => {
     };
 
     return (
-        <div className="overflow-x-clip">
+        <div className="overflow-x-clip over">
             <div
                 id="supportiveMessages"
                 ref={supportiveMessagesContainerRef}
