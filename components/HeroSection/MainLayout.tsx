@@ -114,39 +114,41 @@ const HeroMainLayout = () => {
     };
 
     return (
-        <div className="overflow-x-clip over">
-            <div
-                id="supportiveMessages"
-                ref={supportiveMessagesContainerRef}
-                className="h-[600vh] relative"
-            >
-                <div className="follow-screen h-screen sticky top-0 flex items-center -ml-[30vw]">
-                    {supportiveMessages.map((supportiveMessage, index) => {
-                        const rotationPercentage =
-                            index * persupportiveMessagesRotationPercentage;
-                        const rotation =
-                            (rotationPercentage / 100) * totalRotation;
+        <div className="w-full">
+            <div className="overflow-x-clip over hidden md:flex">
+                <div
+                    id="supportiveMessages"
+                    ref={supportiveMessagesContainerRef}
+                    className="h-[600vh] relative"
+                >
+                    <div className="follow-screen h-screen sticky top-0 flex items-center -ml-[30vw]">
+                        {supportiveMessages.map((supportiveMessage, index) => {
+                            const rotationPercentage =
+                                index * persupportiveMessagesRotationPercentage;
+                            const rotation =
+                                (rotationPercentage / 100) * totalRotation;
 
-                        const scrollRotation =
-                            typeof window !== 'undefined' &&
-                            window.scrollY !== undefined &&
-                            supportiveMessagesContainerRef.current
-                                ? (window.scrollY /
-                                      (supportiveMessagesContainerRef.current
-                                          ?.clientHeight -
-                                          window.innerHeight)) *
-                                  totalRotation
-                                : 0;
+                            const scrollRotation =
+                                typeof window !== 'undefined' &&
+                                window.scrollY !== undefined &&
+                                supportiveMessagesContainerRef.current
+                                    ? (window.scrollY /
+                                          (supportiveMessagesContainerRef
+                                              .current?.clientHeight -
+                                              window.innerHeight)) *
+                                      totalRotation
+                                    : 0;
 
-                        const skipRotation =
-                            ((skip * persupportiveMessagesRotationPercentage) /
-                                100) *
-                            totalRotation;
+                            const skipRotation =
+                                ((skip *
+                                    persupportiveMessagesRotationPercentage) /
+                                    100) *
+                                totalRotation;
 
-                        return (
-                            <span
-                                key={index}
-                                className={`
+                            return (
+                                <span
+                                    key={index}
+                                    className={`
                                     absolute transform-gpu origin-left pl-[40vw] whitespace-nowrap select-none
                                     transition-all duration-300 ease-in-out text-[4.5vw] flex items-center
                                     ${!supportiveMessage.emoji ? 'pointer-events-none opacity-20' : ''}
@@ -154,34 +156,35 @@ const HeroMainLayout = () => {
                                     ${!supportiveMessage.emoji && index !== activesupportiveMessagesIndex ? 'opacity-50' : ''}
                                     ${supportiveMessage.emoji && index !== activesupportiveMessagesIndex ? 'hover:opacity-70 cursor-pointer' : ''}
                                 `}
-                                style={{
-                                    transform: `rotate(${rotation - scrollRotation - skipRotation}deg)`,
-                                }}
-                                onClick={() =>
-                                    supportiveMessage.emoji &&
-                                    handlesupportiveMessagesClick(index)
-                                }
-                            >
-                                <span
-                                    className="absolute left-[35vw] scale-0 transition-transform duration-200 ease-in-out"
                                     style={{
-                                        transform:
-                                            index ===
-                                            activesupportiveMessagesIndex
-                                                ? 'scale(0.7)'
-                                                : 'scale(0)',
+                                        transform: `rotate(${rotation - scrollRotation - skipRotation}deg)`,
                                     }}
+                                    onClick={() =>
+                                        supportiveMessage.emoji &&
+                                        handlesupportiveMessagesClick(index)
+                                    }
                                 >
-                                    {supportiveMessage.emoji}
+                                    <span
+                                        className="absolute left-[35vw] scale-0 transition-transform duration-200 ease-in-out"
+                                        style={{
+                                            transform:
+                                                index ===
+                                                activesupportiveMessagesIndex
+                                                    ? 'scale(0.7)'
+                                                    : 'scale(0)',
+                                        }}
+                                    >
+                                        {supportiveMessage.emoji}
+                                    </span>
+                                    <span
+                                        className={`xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold ${index === activesupportiveMessagesIndex ? 'text-[#667085]' : 'text-[#D0D5DD]'} `}
+                                    >
+                                        {supportiveMessage.text}
+                                    </span>
                                 </span>
-                                <span
-                                    className={`xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold ${index === activesupportiveMessagesIndex ? 'text-[#667085]' : 'text-[#D0D5DD]'} `}
-                                >
-                                    {supportiveMessage.text}
-                                </span>
-                            </span>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
             <HeroContent>
