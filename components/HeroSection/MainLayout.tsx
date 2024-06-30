@@ -12,6 +12,7 @@ const HeroMainLayout = () => {
     const [activesupportiveMessagesIndex, setActivesupportiveMessagesIndex] =
         useState(0);
     const supportiveMessagesContainerRef = useRef<any>(null);
+    const [TOTAL_ROTATION_ANGLE, setTotalRotationAngle] = useState(100);
 
     const supportiveMessages = [
         { text: 'I am with you to motivate you.', emoji: null },
@@ -41,11 +42,32 @@ const HeroMainLayout = () => {
     ).length;
 
     // Adjust this value to control the spread of supportiveMessages
-    const TOTAL_ROTATION_ANGLE = 100; // degrees
+    //const TOTAL_ROTATION_ANGLE = 100;
 
     const persupportiveMessagesRotationPercentage =
         100 / (supportiveMessages.length - skip - 1);
     const totalRotation = TOTAL_ROTATION_ANGLE;
+
+    useEffect(() => {
+        const updateRotationAngle = () => {
+            if (typeof window !== 'undefined') {
+                if (window.matchMedia('(min-width: 1280px)').matches) {
+                    setTotalRotationAngle(100);
+                } else if (window.matchMedia('(min-width: 1024px)').matches) {
+                    setTotalRotationAngle(100);
+                } else if (window.matchMedia('(min-width: 768px)').matches) {
+                    setTotalRotationAngle(130);
+                } else {
+                    setTotalRotationAngle(180);
+                }
+            }
+        };
+
+        window.addEventListener('resize', updateRotationAngle);
+        updateRotationAngle();
+
+        return () => window.removeEventListener('resize', updateRotationAngle);
+    }, []);
 
     useEffect(() => {
         const onScroll = () => {
@@ -141,7 +163,7 @@ const HeroMainLayout = () => {
                                 }
                             >
                                 <span
-                                    className="absolute left-[35vw] font-['Noto_Color_Emoji'] scale-0 transition-transform duration-200 ease-in-out"
+                                    className="absolute left-[35vw] scale-0 transition-transform duration-200 ease-in-out"
                                     style={{
                                         transform:
                                             index ===
