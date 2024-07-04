@@ -9,9 +9,9 @@ const DogEmoji = () => {
     return (
         <motion.div
             ref={ref}
-            className="absolute sm:top-80 top-56 lg:right-52 md:right-32 sm:right-16 right-20"
-            animate={isMobile && isInViewport ? { x: 0 } : { x: 80 }}
-            initial={isMobile ? { x: 80 } : undefined}
+            className="absolute sm:top-80 top-56 lg:right-52 md:right-32 sm:right-16 right-36"
+            animate={!isMobile && isInViewport ? { x: 0 } : { x: 80 }}
+            initial={!isMobile ? { x: 80 } : undefined}
             transition={
                 isMobile
                     ? { type: 'spring', stiffness: 100, damping: 12 }

@@ -32,7 +32,10 @@ const OutroLayout = () => {
     }, [words.length]);
 
     return (
-        <div ref={sectionRef} className="w-full min-h-[400vh] max-h-[400vh]">
+        <div
+            ref={sectionRef}
+            className="w-full sm:min-h-[300vh] h-screen max-h-[400vh]"
+        >
             <div className="w-full h-screen flex flex-col justify-center sticky top-0">
                 <p className="text-left font-bold xl:text-4xl lg:text-3xl md:text-2xl text-xl lg:w-7/12 md:w-8/12 w-10/12 mx-auto">
                     {words.map((word, index) => (
