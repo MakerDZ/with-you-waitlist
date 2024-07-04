@@ -9,7 +9,7 @@ const SeedlingEmoji = () => {
     return (
         <motion.div
             ref={ref}
-            className=" absolute bottom-60 lg:left-80 md:left-52 sm:left-28 left-14"
+            className=" absolute bottom-60 lg:left-80 md:left-52 sm:left-28 left-32"
             animate={!isMobile && isInViewport ? { x: 0 } : { x: -80 }}
             initial={!isMobile ? { x: -80 } : undefined}
             transition={
