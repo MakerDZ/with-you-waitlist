@@ -14,34 +14,40 @@ interface Item {
 
 let notifications = [
     {
-        name: 'Complete Project Milestone',
-        description: `You're close to finishing that big task!`,
+        name: 'Learning Python',
+        description:
+            'Keep up the great work with Python! Focus on mastering loops or functions today.',
         time: '15m ago',
         icon: '🐶',
         color: '#00C9A7',
     },
     {
-        name: 'Health Journey',
-        description: 'Remember your fitness goals today.',
+        name: 'Daily Exercise Routine',
+        description:
+            'Stay consistent with your exercise routine. Every step forward counts towards your fitness goals.',
         time: '10m ago',
         icon: '🐈',
         color: '#FFB800',
     },
     {
-        name: 'Learning New Skills',
-        description: 'Keep practicing that new language!',
+        name: 'Writing Project Progress',
+        description:
+            "Reflect on yesterday's progress in your writing project. Keep refining your ideas and writing consistently!",
         time: '5m ago',
         icon: '🐒',
         color: '#FF3D71',
     },
     {
-        name: 'Financial Planning',
-        description: 'Stay steady with your savings plan.',
+        name: 'Guitar Learning Journey',
+        description:
+            'Celebrate mastering a new chord progression yesterday! Keep practicing and enjoying the process.',
         time: '2m ago',
         icon: '🐼',
         color: '#1E86FF',
     },
 ];
+
+
 notifications = Array.from({ length: 10 }, () => notifications).flat();
 
 const Notification = ({ name, description, icon, color, time }: Item) => {

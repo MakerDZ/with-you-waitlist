@@ -21,32 +21,33 @@ interface Item {
 
 let notifications = [
     {
-        name: 'Complete Project Milestone',
-        description: `You're close to finishing that big task!`,
+        name: 'Learning Spanish',
+        description:
+            'Practice Spanish today! New words or simple conversations.',
         time: '15m ago',
         icon: '🐶',
-        color: '#00C9A7',
+        color: '#FFB100',
     },
     {
-        name: 'Health Journey',
-        description: 'Remember your fitness goals today.',
+        name: 'Healthy Eating Habits',
+        description: 'Choose a balanced meal today for energy.',
         time: '10m ago',
-        icon: '🐈',
-        color: '#FFB800',
+        icon: '🐱',
+        color: '#4CD964',
     },
     {
-        name: 'Learning New Skills',
-        description: 'Keep practicing that new language!',
+        name: 'Career Development',
+        description: 'Explore new opportunities in your career field.',
         time: '5m ago',
-        icon: '🐒',
-        color: '#FF3D71',
+        icon: '🐦',
+        color: '#FF9500',
     },
     {
-        name: 'Financial Planning',
-        description: 'Stay steady with your savings plan.',
+        name: 'Artistic Journey',
+        description: 'Create something new today.',
         time: '2m ago',
-        icon: '🐼',
-        color: '#1E86FF',
+        icon: '🦊',
+        color: '#FF69B4',
     },
 ];
 
