@@ -22,8 +22,8 @@ export default function RootLayout({
     return (
         <html suppressHydrationWarning lang="en">
             <head />
-            <body className="bg-lines min-h-screen h-full bg-gradient-to-r from-[#F3F6FF] to-white font-nunito relative overflow-x-hidden">
-                {children}
+            <body className="bg-lines min-h-screen h-full bg-gradient-to-r from-[#F3F6FF] to-white font-nunito overflow-x-hidden">
+                <div className="relative w-full h-full">{children}</div>
             </body>
         </html>
     );
