@@ -9,7 +9,7 @@ const PrizeEmoji = () => {
     return (
         <motion.div
             ref={ref}
-            className="absolute top-96 lg:right-28 md:right-16 sm:right-11 right-3"
+            className="absolute sm:top-96 top-80 lg:right-28 md:right-16 sm:right-11 right-3"
             animate={isMobile && isInViewport ? { y: 0 } : { y: 110 }}
             initial={isMobile ? { y: 110 } : undefined}
             transition={
