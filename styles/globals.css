@@ -3,11 +3,6 @@
 @tailwind components;
 @tailwind utilities;  
 
-html,
-body {
-  overflow-x: hidden;
-}
-
 .bg-lines {
     background-color: #f9fafb;
     opacity: 1;

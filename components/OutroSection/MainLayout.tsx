@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 
 const OutroLayout = () => {
@@ -34,7 +35,7 @@ const OutroLayout = () => {
     return (
         <div
             ref={sectionRef}
-            className="w-full sm:min-h-[300vh] h-screen max-h-[400vh]"
+            className="w-full h-[150vh] sm:min-h-[250vh] sm:max-h-[250vh]"
         >
             <div className="w-full h-screen flex flex-col justify-center sticky top-0">
                 <p className="text-left font-bold xl:text-4xl lg:text-3xl md:text-2xl text-xl lg:w-7/12 md:w-8/12 w-10/12 mx-auto">
