@@ -1,8 +1,8 @@
-import { Button } from '@nextui-org/button';
+import WaitlistButton from './waitlist/WaitlistButton';
 
 export default function NavBar() {
     return (
-        <nav className=" sticky top-4 text-[#475466] z-50 flex flex-row justify-between items-center px-6">
+        <nav className=" sticky top-4 text-[#475466] z-50 flex flex-row justify-between items-center px-6 ">
             <div className="px-2 py-2 backdrop-blur-md bg-white/30 rounded-lg text-lg font-extrabold flex flex-row items-center space-x-2">
                 <div className="relative flex items-center justify-center aspect-square z-10 ">
                     <img
@@ -30,12 +30,7 @@ export default function NavBar() {
                     WithYou <span className="text-[#FE9C26] ">AI</span>
                 </h1>
             </div>
-            <Button
-                radius="md"
-                className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg font-bold sm:text-base text-sm"
-            >
-                Join WaitList
-            </Button>
+            <WaitlistButton />
         </nav>
     );
 }
