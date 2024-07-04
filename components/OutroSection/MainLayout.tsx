@@ -1,8 +1,9 @@
 'use client';
-
+import useIsMobile from '@/hooks/useIsMobile';
 import React, { useState, useEffect, useRef } from 'react';
 
 const OutroLayout = () => {
+    const { isMobile } = useIsMobile();
     const content = `This app's your safe digital home, where a pet helps you achieve life goals and truly understands you.`;
     const words = content.split(' ');
 
@@ -35,22 +36,25 @@ const OutroLayout = () => {
     return (
         <div
             ref={sectionRef}
-            className="w-full h-[150vh] sm:min-h-[250vh] sm:max-h-[250vh]"
+            className="w-full h-screen sm:min-h-[250vh] sm:max-h-[250vh]"
         >
             <div className="w-full h-screen flex flex-col justify-center sticky top-0">
                 <p className="text-left font-bold xl:text-4xl lg:text-3xl md:text-2xl text-xl lg:w-7/12 md:w-8/12 w-10/12 mx-auto">
-                    {words.map((word, index) => (
-                        <span
-                            className="text-[#475465]"
-                            key={index}
-                            style={{
-                                opacity: index <= highlightedIndex ? 1 : 0.3,
-                                transition: 'opacity 0.3s ease-in-out',
-                            }}
-                        >
-                            {word}{' '}
-                        </span>
-                    ))}
+                    {isMobile
+                        ? `This app's your safe digital home, where a pet helps you achieve life goals and truly understands you.`
+                        : words.map((word, index) => (
+                              <span
+                                  className="text-[#475465]"
+                                  key={index}
+                                  style={{
+                                      opacity:
+                                          index <= highlightedIndex ? 1 : 0.3,
+                                      transition: 'opacity 0.3s ease-in-out',
+                                  }}
+                              >
+                                  {word}{' '}
+                              </span>
+                          ))}
                 </p>
             </div>
         </div>
