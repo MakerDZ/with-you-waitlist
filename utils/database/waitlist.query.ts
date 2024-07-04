@@ -1,5 +1,6 @@
 import { db } from '@/libs/db';
 
+
 async function exist(email: string) {
     try {
         const waitlist = await db.waitingList.findUnique({
