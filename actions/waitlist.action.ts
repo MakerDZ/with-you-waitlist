@@ -24,7 +24,7 @@ const JoinWaitlist = action(createWaitlist, async ({ email, feeling }) => {
         const { data, error } = await resend.emails.send({
             from: 'noreply@withyouai.com',
             to: [email],
-            subject: 'Hello world',
+            subject: '🐶 Woof Woof',
             react: Email(),
         });
 
