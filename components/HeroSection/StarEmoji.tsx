@@ -9,7 +9,7 @@ const StarEmoji = () => {
     return (
         <motion.div
             ref={ref}
-            className="absolute sm:bottom-72 bottom-56 lg:left-28 md:left-16 sm:left-11 left-3"
+            className="absolute sm:bottom-72 bottom-52 lg:left-28 md:left-16 sm:left-11 left-3"
             animate={!isMobile && isInViewport ? { y: 0 } : { y: -110 }}
             initial={!isMobile ? { y: -110 } : undefined}
             transition={

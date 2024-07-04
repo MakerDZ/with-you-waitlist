@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     icons: {
         icon: '/favicon.ico',
     },
+    openGraph: {
+        title: 'WithYou AI',
+        description: `Your Ally in Achieving Life's Goals`,
+        images: '/opengraph.png',
+    },
 };
 
 

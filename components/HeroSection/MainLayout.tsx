@@ -115,7 +115,7 @@ const HeroMainLayout = () => {
 
     return (
         <div className="w-full">
-            <div className="overflow-x-clip over hidden md:flex">
+            <div className="sm:overflow-x-clip overflow-x-hidden over hidden md:flex">
                 <div
                     id="supportiveMessages"
                     ref={supportiveMessagesContainerRef}

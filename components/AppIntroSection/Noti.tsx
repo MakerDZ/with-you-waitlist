@@ -93,7 +93,7 @@ export function AnimatedListDemo() {
     return (
         <div
             ref={ref}
-            className="flex max-h-[200px] min-h-[200px] w-full max-w-[32rem] flex-col overflow-hidden rounded-lg  p-6 absolute bottom-0 lg:right-0 z-50"
+            className="flex max-h-[200px] min-h-[200px] w-full max-w-[32rem] flex-col overflow-hidden rounded-lg  p-6 absolute bottom-0 lg:right-0 z-40"
         >
             {isInViewport && (
                 <AnimatedList>

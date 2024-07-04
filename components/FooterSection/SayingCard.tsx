@@ -1,5 +1,7 @@
 import Marquee from '@/components/magicui/marquee';
 import { cn } from '@/libs/utlis';
+import { Button } from '@nextui-org/button';
+import WaitlistButton from '../waitlist/WaitlistButton';
 
 const reviews = [
     {
@@ -110,13 +112,16 @@ const SayingCard = () => {
                         src="https://t4.ftcdn.net/jpg/04/41/16/97/360_F_441169716_cHhSAy9FtA7ZV96GMq4CzADZCvvB9zJq.jpg"
                     />
                 </div>
-                <h1 className=" text-[#5E5459] lg:text-3xl md:text-2xl text-xl font-bold text-center ">
+                <h1 className=" text-[#5E5459] md:text-2xl text-xl font-bold text-center ">
                     Coming Soon!!
                 </h1>
                 <p className="text-center font-semibold text-neutral-500 w-10/12 mx-auto">
                     Your personal AI companion pet for life, growth, and
                     everything.
                 </p>
+                <div className="mx-auto mt-5">
+                    <WaitlistButton />
+                </div>
             </div>
 
             <Marquee
